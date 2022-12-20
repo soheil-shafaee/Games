@@ -4,13 +4,29 @@ BACKGROUND_COLOR = "#434242"
 FONT_COLOR = "#F3EFE0"
 
 
-class SpyInterface:
+class Background:
+    def __init__(self):
+        self.window = None
+        self.bg()
+
+    def bg(self):
+        self.window = Tk()
+        self.window.config(padx=50, pady=35)
+        self.window.iconbitmap("images/images.ico")
+        self.window.configure(bg=BACKGROUND_COLOR)
+        self.window.title(string="Spy")
+        self.window.geometry("700x500")
+
+    def main_loop(self):
+        self.window.mainloop()
+
+
+class SpyInterface(Background):
 
     def __init__(self):
+        super().__init__()
         # --------- Background Section ----------------
-        self.window = Tk()
-        self.background()
-
+        self.window = self.window
         # -------- Text Section  ------------
         self.text = Label(text="Who's Spy ?",
                           font=("Segoe UI Black", 17, "bold"),
@@ -40,12 +56,5 @@ class SpyInterface:
 
         # ---------- Display Section -----------
         self.window.mainloop()
-
-    def background(self):
-        self.window.config(padx=50, pady=35)
-        self.window.iconbitmap("images/images.ico")
-        self.window.configure(bg=BACKGROUND_COLOR)
-        self.window.title(string="Spy")
-        self.window.geometry("700x500")
 
 

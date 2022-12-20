@@ -39,4 +39,4 @@ class Spy:
             self.players_list.remove(character)
 
             if len(self.players_list) == 0:
-                print('The Game has started')
+                return False
