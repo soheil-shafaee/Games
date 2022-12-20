@@ -49,4 +49,3 @@ class SpyInterface:
         self.window.geometry("700x500")
 
 
-ui_display = SpyInterface()
