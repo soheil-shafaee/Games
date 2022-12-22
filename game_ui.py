@@ -45,7 +45,7 @@ class SpyInterface(Background):
         # ---------- Button Section  -----------
         self.play_button = Button(text="Play Game",
                                   image=self.play_image,
-                                  borderwidth=0,
+                                  bd=0,
                                   bg=BACKGROUND_COLOR)
         self.play_button.place(x=200, y=390)
         self.menu_button = Button(text="Menu",
