@@ -104,7 +104,7 @@ def no():
     for display_detail in window.winfo_children():
         display_detail.destroy()
     mafia_image = PhotoImage(file="images/mafia.jpg")
-    canvas = Canvas(width=600, height=262, bg=BACKGROUND_COLOR, highlightthickness=0)
+    canvas = Canvas(width=1600, height=1200, bg=BACKGROUND_COLOR, highlightthickness=0)
     canvas.create_image(300, 310, image=mafia_image)
     canvas.place(x=100, y=100)
 
