@@ -2,14 +2,12 @@ from tkinter import *
 import time
 import math
 import winsound
-from random import choice
 
 BACKGROUND_COLOR = "#434242"
 FONT_COLOR = "#7FE9DE"
 TIMER_COUNT = NONE
 DELAY = 0
 OLD_DELAY = 50
-COLOR_LIST = ["#FF6E31", "#FD8A8A", "#91D8E4", "#DC0000", "#FFF6BD", "#C0EEE4", "#F8F988", "#FF7000"]
 
 
 class Timer:
@@ -52,6 +50,10 @@ class Timer:
 
         Label(text="min", font=("Segoe UI Black", 12), fg=FONT_COLOR, bg=BACKGROUND_COLOR).place(x=285, y=235)
         Label(text="sec", font=("Segoe UI Black", 12), fg=FONT_COLOR, bg=BACKGROUND_COLOR).place(x=475, y=235)
+
+        # -------------- Button Image ----------------------
+        self.image_play_again = PhotoImage(file="images/play_again.png")
+        self.image_menu = PhotoImage(file="images/menu.png")
 
         # -------------- Suggest Time Image ----------------
         self.image1 = PhotoImage(file="images/5min.png")
@@ -110,21 +112,30 @@ class Timer:
         self.count_down(time_change)
 
     def count_down(self, mint):
-        self.start_button.config(state=DISABLED)
-        self.button1.config(state=DISABLED)
-        self.button2.config(state=DISABLED)
-        self.button3.config(state=DISABLED)
+        global TIMER_COUNT
+        try:
+            self.start_button.configure(state=DISABLED)
+            self.button1.configure(state=DISABLED)
+            self.button2.configure(state=DISABLED)
+            self.button3.configure(state=DISABLED)
+        except:
+            TIMER_COUNT = NONE
+
         second_counter = mint % 60
         minute_counter = math.floor(mint / 60)
+
         if second_counter < 10:
             second_counter = f"0{second_counter}"
+
         if minute_counter < 10:
             self.minute.set(f"0{minute_counter}")
+
         else:
             self.minute.set(str(minute_counter))
+
         self.second.set(second_counter)
+
         if mint > 0:
-            global TIMER_COUNT
             TIMER_COUNT = self.window.after(1000, self.count_down, mint - 1)
 
         if self.minute.get() == "00" and self.second.get() == "00":
@@ -133,7 +144,7 @@ class Timer:
 
     # -------------- Result Display --------------------
     def yes(self):
-        global DELAY, OLD_DELAY, COLOR_LIST
+        global DELAY, OLD_DELAY
         for display_detail in self.window.winfo_children():
             display_detail.destroy()
 
@@ -151,21 +162,9 @@ class Timer:
 
             DELAY += OLD_DELAY
             if i > 26:
-                play_again = Button(text="Play Again",
-                                    bg=FONT_COLOR,
-                                    bd=0,
-                                    font=("Segoe UI Black", 10, "bold"),
-                                    width=10,
-                                    height=2,
-                                    )
+                play_again = Button(bg=BACKGROUND_COLOR, bd=0, image=self.image_play_again)
                 play_again.place(x=210, y=300)
-                menu = Button(text="Menu",
-                              bg=FONT_COLOR,
-                              bd=0,
-                              font=("Segoe UI Black", 10, "bold"),
-                              width=10,
-                              height=2,
-                              )
+                menu = Button(bg=BACKGROUND_COLOR, bd=0, image=self.image_menu)
                 menu.place(x=360, y=300)
 
     def no(self):
@@ -182,21 +181,9 @@ class Timer:
             canvas.after(DELAY, print_text)
             DELAY += OLD_DELAY
             if i > 26:
-                play_again = Button(text="Play Again",
-                                    bg=FONT_COLOR,
-                                    bd=0,
-                                    font=("Segoe UI Black", 10, "bold"),
-                                    width=10,
-                                    height=2,
-                                    )
+                play_again = Button(bg=BACKGROUND_COLOR, bd=0, image=self.image_play_again)
                 play_again.place(x=210, y=300)
-                menu = Button(text="Menu",
-                              bg=FONT_COLOR,
-                              bd=0,
-                              font=("Segoe UI Black", 10, "bold"),
-                              width=10,
-                              height=2,
-                              )
+                menu = Button(bg=BACKGROUND_COLOR, bd=0, image=self.image_menu)
                 menu.place(x=360, y=300)
 
         winsound.PlaySound("SF-laughter2.wav", winsound.SND_ASYNC)
@@ -228,4 +215,3 @@ class Timer:
         no_button.place(x=350, y=200)
 
 
-Timer()
