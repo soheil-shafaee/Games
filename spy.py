@@ -28,7 +28,7 @@ class Spy:
 
         for spy in range(self.spies):
             self.players_list.append('Spy')
-
+        random.shuffle(self.players_list)
         # Game start
         for turn in range(len(self.players_list)):
             character = random.choice(self.players_list)
@@ -38,5 +38,5 @@ class Spy:
                 print('You are a Spy!')
             self.players_list.remove(character)
 
-            if len(self.players_list) == 0:
-                return False
+    def still_has_players(self):
+        return self.players_quantity < len(self.players_list)

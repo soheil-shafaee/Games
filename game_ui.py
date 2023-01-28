@@ -16,10 +16,10 @@ class Background:
         self.window.configure(bg=BACKGROUND_COLOR)
         self.window.title(string="Spy")
         self.window.geometry("700x500")
-        # self.window.mainloop()
 
     def main_loop(self):
         self.window.mainloop()
+
 
 
 class SpyInterface(Background):
@@ -34,7 +34,6 @@ class SpyInterface(Background):
                           bg=BACKGROUND_COLOR,
                           fg=FONT_COLOR)
         self.text.place(x=300, y=5, anchor="center")
-        # self.bg()
 
         # -------- Image Section ------------
         self.canvas = Canvas(width=300, height=360, bg=BACKGROUND_COLOR, highlightthickness=0)
@@ -47,7 +46,7 @@ class SpyInterface(Background):
         # ---------- Button Section  -----------
         self.play_button = Button(text="Play Game",
                                   image=self.play_image,
-                                  borderwidth=0,
+                                  bd=0,
                                   bg=BACKGROUND_COLOR)
         self.play_button.place(x=200, y=390)
         self.menu_button = Button(text="Menu",
@@ -58,3 +57,5 @@ class SpyInterface(Background):
 
         # ---------- Display Section -----------
         self.window.mainloop()
+
+
