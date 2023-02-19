@@ -1,7 +1,7 @@
 import random
 from tkinter import *
-from game_ui import Background
 from spy import Spy
+from timer import Timer
 
 BACKGROUND_COLOR = "#434242"
 FONT_COLOR = "#7FE9DE"
@@ -9,11 +9,15 @@ FONT_COLOR = "#7FE9DE"
 words = ['a', 'b', 'c', 'd']
 
 
-class Detail(Background, Spy):
+class Detail(Spy):
     def __init__(self):
-        super().__init__()
+        self.window = Tk()
+        self.window.config(padx=50, pady=35)
+        self.window.iconbitmap("images/images.ico")
+        self.window.configure(bg=BACKGROUND_COLOR)
+        self.window.title(string="Spy")
+        self.window.geometry("700x500")
         self.players_list = []
-        self.window = self.window
         self.players_intvar = IntVar()
         self.spies_intvar = IntVar()
         self.players_intvar.set(4)
@@ -94,6 +98,12 @@ class Detail(Background, Spy):
         self.refresh.place(x=110, y=300)
         self.window.mainloop()
 
+
+
+
+
+
+
     def is_6(self):
         self.player_label.config(text="How many Spy? ")
         self.submit.config(text="Choose Spy")
@@ -158,9 +168,9 @@ class Detail(Background, Spy):
         self.players_list.remove(character)
         print(self.players_list)
         if len(self.players_list) == 0:
-            self.character_label.config(text="Start the game")
-            next_button.config(state=DISABLED)
-            self.start_button.config(state=DISABLED)
+            self.window.destroy()
+            Timer()
+
 
     def spy_game(self):
         self.peoples = self.players_quantity - self.spies
@@ -178,6 +188,3 @@ class Detail(Background, Spy):
 
         self.start_button = Button(text="Next", bg=FONT_COLOR, width=30, command=self.spy_logic)
         self.start_button.place(x=110, y=260)
-
-
-Detail()

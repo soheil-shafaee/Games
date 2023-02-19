@@ -1,7 +1,9 @@
 from tkinter import *
+from spy_detail import Detail
 
 BACKGROUND_COLOR = "#434242"
 FONT_COLOR = "#F3EFE0"
+PLAY_GAME = Detail()
 
 
 class Background:
@@ -19,7 +21,6 @@ class Background:
 
     def main_loop(self):
         self.window.mainloop()
-
 
 
 class SpyInterface(Background):
@@ -48,14 +49,17 @@ class SpyInterface(Background):
             borderwidth=0,
             image=self.image_play,
             bg=BACKGROUND_COLOR,
-            compound=CENTER)
+            compound=CENTER,)
         self.play_button.place(x=180, y=420)
-        self.menu_button = Button(text="Menu",
-                                  borderwidth=0,
-                                  image=self.image_menu,
-                                  bg=BACKGROUND_COLOR)
+        self.menu_button = Button(
+            text="Menu",
+            borderwidth=0,
+            image=self.image_menu,
+            bg=BACKGROUND_COLOR)
         self.menu_button.place(x=320, y=420)
 
         # ---------- Display Section -----------
         self.window.mainloop()
 
+
+SpyInterface()

@@ -174,7 +174,7 @@ class Timer:
         canvas = Canvas(self.window, background=BACKGROUND_COLOR, highlightthickness=0)
         spy_canvas = canvas.create_text(180, 100, font=("Segoe UI Black", 32, "bold"))
         canvas.place(x=150, y=50)
-        spy_text = "The Winner is \n        spy 😈!!"
+        spy_text = "The Winner is \n       spy 😈!!"
         for i in range(len(spy_text) + 1):
             word = spy_text[:i]
             print_text = lambda main_word=word: canvas.itemconfig(spy_canvas, text=main_word, fill=FONT_COLOR)
@@ -213,5 +213,4 @@ class Timer:
                            height=2,
                            command=self.no)
         no_button.place(x=350, y=200)
-
 
