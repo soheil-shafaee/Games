@@ -16,7 +16,7 @@ class Detail(Spy):
         self.window.iconbitmap("images/images.ico")
         self.window.configure(bg=BACKGROUND_COLOR)
         self.window.title(string="Spy")
-        self.window.geometry("700x500")
+        self.window.geometry("700x550")
         self.players_list = []
         self.players_intvar = IntVar()
         self.spies_intvar = IntVar()
@@ -98,12 +98,6 @@ class Detail(Spy):
         self.refresh.place(x=110, y=300)
         self.window.mainloop()
 
-
-
-
-
-
-
     def is_6(self):
         self.player_label.config(text="How many Spy? ")
         self.submit.config(text="Choose Spy")
@@ -171,7 +165,6 @@ class Detail(Spy):
             self.window.destroy()
             Timer()
 
-
     def spy_game(self):
         self.peoples = self.players_quantity - self.spies
         for people in range(self.peoples):
@@ -188,3 +181,7 @@ class Detail(Spy):
 
         self.start_button = Button(text="Next", bg=FONT_COLOR, width=30, command=self.spy_logic)
         self.start_button.place(x=110, y=260)
+
+
+def play_game():
+    Detail()

@@ -1,34 +1,38 @@
 from tkinter import *
-from spy_detail import Detail
+from spy_detail import play_game
 
 BACKGROUND_COLOR = "#434242"
 FONT_COLOR = "#F3EFE0"
-PLAY_GAME = Detail()
 
 
-class Background:
+# class Background:
+#     def __init__(self):
+#         self.window = None
+#         self.bg()
+#
+#     def bg(self):
+#         self.window = Tk()
+#         self.window.config(padx=50, pady=35)
+#         self.window.iconbitmap("images/images.ico")
+#         self.window.configure(bg=BACKGROUND_COLOR)
+#         self.window.title(string="Spy")
+#         self.window.geometry("700x600")
+
+# def main_loop(self):
+#     self.window.mainloop()
+#
+
+class SpyInterface:
+
     def __init__(self):
-        self.window = None
-        self.bg()
-
-    def bg(self):
+        # --------- Background Section ----------------
         self.window = Tk()
         self.window.config(padx=50, pady=35)
         self.window.iconbitmap("images/images.ico")
         self.window.configure(bg=BACKGROUND_COLOR)
         self.window.title(string="Spy")
-        self.window.geometry("700x600")
+        self.window.geometry("700x550")
 
-    def main_loop(self):
-        self.window.mainloop()
-
-
-class SpyInterface(Background):
-
-    def __init__(self):
-        super().__init__()
-        # --------- Background Section ----------------
-        self.window = self.window
         # -------- Text Section  ------------
         self.text = Label(text="Who's Spy ?",
                           font=("Segoe UI Black", 28, "bold"),
@@ -49,7 +53,8 @@ class SpyInterface(Background):
             borderwidth=0,
             image=self.image_play,
             bg=BACKGROUND_COLOR,
-            compound=CENTER,)
+            compound=CENTER,
+            command=play_game, )
         self.play_button.place(x=180, y=420)
         self.menu_button = Button(
             text="Menu",

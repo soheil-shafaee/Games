@@ -18,7 +18,7 @@ class Timer:
         self.window.iconbitmap("images/images.ico")
         self.window.configure(bg=BACKGROUND_COLOR)
         self.window.title(string="Spy")
-        self.window.geometry("700x500")
+        self.window.geometry("700x550")
         self.timer_label = Label(text="Timer",
                                  font=("Segoe UI Black", 68, "bold"),
                                  fg=FONT_COLOR,
