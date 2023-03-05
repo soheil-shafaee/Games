@@ -3,6 +3,7 @@ import time
 import math
 import winsound
 
+
 BACKGROUND_COLOR = "#434242"
 FONT_COLOR = "#7FE9DE"
 TIMER_COUNT = NONE
@@ -118,7 +119,7 @@ class Timer:
             self.button1.configure(state=DISABLED)
             self.button2.configure(state=DISABLED)
             self.button3.configure(state=DISABLED)
-        except:
+        except :
             TIMER_COUNT = NONE
 
         second_counter = mint % 60

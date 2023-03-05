@@ -5,23 +5,6 @@ BACKGROUND_COLOR = "#434242"
 FONT_COLOR = "#F3EFE0"
 
 
-# class Background:
-#     def __init__(self):
-#         self.window = None
-#         self.bg()
-#
-#     def bg(self):
-#         self.window = Tk()
-#         self.window.config(padx=50, pady=35)
-#         self.window.iconbitmap("images/images.ico")
-#         self.window.configure(bg=BACKGROUND_COLOR)
-#         self.window.title(string="Spy")
-#         self.window.geometry("700x600")
-
-# def main_loop(self):
-#     self.window.mainloop()
-#
-
 class SpyInterface:
 
     def __init__(self):
@@ -48,13 +31,17 @@ class SpyInterface:
         self.canvas.create_image(180, 180, image=self.spy_image)
         self.canvas.place(x=120, y=45)
 
+        def next_page():
+            self.window.destroy()
+            self.window.after(100, play_game())
+
         # ---------- Button Section  -----------
         self.play_button = Button(
             borderwidth=0,
             image=self.image_play,
             bg=BACKGROUND_COLOR,
             compound=CENTER,
-            command=play_game, )
+            command=next_page, )
         self.play_button.place(x=180, y=420)
         self.menu_button = Button(
             text="Menu",
@@ -64,7 +51,6 @@ class SpyInterface:
         self.menu_button.place(x=320, y=420)
 
         # ---------- Display Section -----------
+
         self.window.mainloop()
 
-
-SpyInterface()
