@@ -30,6 +30,8 @@ class Detail(Spy):
                                      bg=BACKGROUND_COLOR,
                                      fg=FONT_COLOR,
                                      font=("Segoe UI Black", 28, "bold"))
+        # --------- Images Section -------------
+        self.player_ch = PhotoImage(file="images/player character.png")
         # --------- Player Number --------------
         self.player_label = Label(text="Number of Player:",
                                   bg=BACKGROUND_COLOR,
@@ -91,7 +93,11 @@ class Detail(Spy):
                                 font=("Segoe UI Black", 18, "bold"),
                                 command=self.players_num
                                 )
-        self.submit = Button(text="Choose Player", bg=FONT_COLOR, width=20, command=self.players_num)
+        self.submit = Button(image=self.player_ch,
+                             bg=FONT_COLOR,
+                             borderwidth=0,
+                             compound=CENTER,
+                             command=self.players_num)
         self.submit.place(x=110, y=260)
         self.start_button = Button(text="Start Game", bg=FONT_COLOR, width=30, command=self.spy_game)
         self.refresh = Button(text="Reset Info", bg=FONT_COLOR, width=20, command=self.edit)
@@ -184,4 +190,8 @@ class Detail(Spy):
 
 
 def play_game():
+    Detail()
+
+
+def play_again():
     Detail()

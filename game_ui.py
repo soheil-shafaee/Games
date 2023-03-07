@@ -42,7 +42,9 @@ class SpyInterface:
             bg=BACKGROUND_COLOR,
             compound=CENTER,
             command=next_page, )
+
         self.play_button.place(x=180, y=420)
+
         self.menu_button = Button(
             text="Menu",
             borderwidth=0,

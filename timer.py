@@ -3,7 +3,6 @@ import time
 import math
 import winsound
 
-
 BACKGROUND_COLOR = "#434242"
 FONT_COLOR = "#7FE9DE"
 TIMER_COUNT = NONE
@@ -119,7 +118,7 @@ class Timer:
             self.button1.configure(state=DISABLED)
             self.button2.configure(state=DISABLED)
             self.button3.configure(state=DISABLED)
-        except :
+        except:
             TIMER_COUNT = NONE
 
         second_counter = mint % 60
@@ -162,11 +161,6 @@ class Timer:
             canvas.after(DELAY, print_winner_text)
 
             DELAY += OLD_DELAY
-            if i > 26:
-                play_again = Button(bg=BACKGROUND_COLOR, bd=0, image=self.image_play_again)
-                play_again.place(x=210, y=300)
-                menu = Button(bg=BACKGROUND_COLOR, bd=0, image=self.image_menu)
-                menu.place(x=360, y=300)
 
     def no(self):
         global DELAY, OLD_DELAY
@@ -181,11 +175,6 @@ class Timer:
             print_text = lambda main_word=word: canvas.itemconfig(spy_canvas, text=main_word, fill=FONT_COLOR)
             canvas.after(DELAY, print_text)
             DELAY += OLD_DELAY
-            if i > 26:
-                play_again = Button(bg=BACKGROUND_COLOR, bd=0, image=self.image_play_again)
-                play_again.place(x=210, y=300)
-                menu = Button(bg=BACKGROUND_COLOR, bd=0, image=self.image_menu)
-                menu.place(x=360, y=300)
 
         winsound.PlaySound("SF-laughter2.wav", winsound.SND_ASYNC)
 
@@ -214,4 +203,3 @@ class Timer:
                            height=2,
                            command=self.no)
         no_button.place(x=350, y=200)
-
