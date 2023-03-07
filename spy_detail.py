@@ -192,6 +192,3 @@ class Detail(Spy):
 def play_game():
     Detail()
 
-
-def play_again():
-    Detail()
