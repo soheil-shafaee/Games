@@ -32,6 +32,8 @@ class Detail(Spy):
                                      font=("Segoe UI Black", 28, "bold"))
         # --------- Images Section -------------
         self.player_ch = PhotoImage(file="images/player character.png")
+        self.reset_info = PhotoImage(file="images/Reset_inf.png")
+        self.let_start = PhotoImage(file="images/let_go.png")
         # --------- Player Number --------------
         self.player_label = Label(text="Number of Player:",
                                   bg=BACKGROUND_COLOR,
@@ -97,16 +99,27 @@ class Detail(Spy):
                              bg=FONT_COLOR,
                              borderwidth=0,
                              compound=CENTER,
-                             command=self.players_num)
-        self.submit.place(x=110, y=260)
-        self.start_button = Button(text="Start Game", bg=FONT_COLOR, width=30, command=self.spy_game)
-        self.refresh = Button(text="Reset Info", bg=FONT_COLOR, width=20, command=self.edit)
+                             command=self.players_num
+                             )
+        self.submit.place(x=110, y=230)
+        self.start_button = Button(image=self.let_start,
+                                   bg=FONT_COLOR,
+                                   borderwidth=0,
+                                   compound=CENTER,
+                                   command=self.spy_game
+                                   )
+        self.refresh = Button(image=self.reset_info,
+                              bg=FONT_COLOR,
+                              borderwidth=0,
+                              compound=CENTER,
+                              command=self.edit
+                              )
         self.refresh.place(x=110, y=300)
         self.window.mainloop()
 
     def is_6(self):
         self.player_label.config(text="How many Spy? ")
-        self.submit.config(text="Choose Spy")
+        self.submit.config(state=DISABLED)
         self.player_button1.config(state=DISABLED)
         self.player_button2.config(state=DISABLED)
         self.player_button3.config(state=DISABLED)
@@ -116,11 +129,11 @@ class Detail(Spy):
         self.players_quantity = self.players_intvar.get()
         self.spies = self.spies_intvar.get()
         if self.spies_intvar.get():
-            self.start_button.place(x=80, y=340)
+            self.start_button.place(x=80, y=370)
 
     def players_num(self):
         if self.players_intvar.get() == 4:
-            self.start_button.place(x=80, y=340)
+            self.start_button.place(x=80, y=370)
             self.players_quantity = 4
             self.spies = 1
         elif self.players_intvar.get() == 6 or 8:
@@ -186,7 +199,7 @@ class Detail(Spy):
             data.destroy()
 
         self.start_button = Button(text="Next", bg=FONT_COLOR, width=30, command=self.spy_logic)
-        self.start_button.place(x=110, y=260)
+        self.start_button.place(x=150, y=260)
 
 
 def play_game():
