@@ -52,9 +52,10 @@ class Timer:
         Label(text="sec", font=("Segoe UI Black", 12), fg=FONT_COLOR, bg=BACKGROUND_COLOR).place(x=475, y=235)
 
         # -------------- Button Image ----------------------
-        self.image_play_again = PhotoImage(file="images/play_again.png")
-        self.image_menu = PhotoImage(file="images/menu.png")
-
+        self.start = PhotoImage(file="images/start.png")
+        self.finish = PhotoImage(file="images/finish.png")
+        self.yes_button = PhotoImage(file="images/yes.png")
+        self.no_button = PhotoImage(file="images/no.png")
         # -------------- Suggest Time Image ----------------
         self.image1 = PhotoImage(file="images/5min.png")
         self.button1 = Button(image=self.image1, bd=0, bg=BACKGROUND_COLOR, command=self.five_minute)
@@ -69,22 +70,18 @@ class Timer:
         self.button3.place(x=370, y=260)
 
         # -------------- Start & Finish Button ---------------------
-        self.start_button = Button(text="Start",
+        self.start_button = Button(image=self.start,
                                    bg=FONT_COLOR,
-                                   bd=0,
-                                   font=("Segoe UI Black", 10, "bold"),
-                                   width=10,
-                                   height=2,
+                                   borderwidth=0,
+                                   compound=CENTER,
                                    command=self.start_timer,
                                    state=DISABLED)
-        self.start_button.place(x=220, y=400)
+        self.start_button.place(x=180, y=400)
 
-        self.finish_button = Button(text="Finish",
+        self.finish_button = Button(image=self.finish,
                                     bg=FONT_COLOR,
-                                    bd=0,
-                                    font=("Segoe UI Black", 10, "bold"),
-                                    width=10,
-                                    height=2,
+                                    borderwidth=0,
+                                    compound=CENTER,
                                     command=self.finish_game)
         self.finish_button.place(x=350, y=400)
 
@@ -186,20 +183,16 @@ class Timer:
               font=("Segoe UI Black", 25, "bold"),
               fg=FONT_COLOR,
               bg=BACKGROUND_COLOR).place(x=180, y=50)
-        yes_button = Button(text="YES",
+        yes_button = Button(image=self.yes_button,
                             bg=FONT_COLOR,
-                            bd=0,
-                            font=("Segoe UI Black", 10, "bold"),
-                            width=10,
-                            height=2,
+                            borderwidth=0,
+                            compound=CENTER,
                             command=self.yes)
         yes_button.place(x=200, y=200)
 
-        no_button = Button(text="NO",
+        no_button = Button(image=self.no_button,
                            bg=FONT_COLOR,
-                           bd=0,
-                           font=("Segoe UI Black", 10, "bold"),
-                           width=10,
-                           height=2,
+                           borderwidth=0,
+                           compound=CENTER,
                            command=self.no)
         no_button.place(x=350, y=200)

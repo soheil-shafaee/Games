@@ -34,6 +34,8 @@ class Detail(Spy):
         self.player_ch = PhotoImage(file="images/player character.png")
         self.reset_info = PhotoImage(file="images/Reset_inf.png")
         self.let_start = PhotoImage(file="images/let_go.png")
+        self.your_ch = PhotoImage(file="images/your_character.png")
+        self.next_pl = PhotoImage(file="images/next_player.png")
         # --------- Player Number --------------
         self.player_label = Label(text="Number of Player:",
                                   bg=BACKGROUND_COLOR,
@@ -168,16 +170,23 @@ class Detail(Spy):
                                      fg=FONT_COLOR,
                                      font=("Segoe UI Black", 28, "bold"))
         self.character_label.place(x=20, y=50)
-        next_button = Button(text="Next_player", bg=FONT_COLOR, width=30, command=self.remove_label)
+        next_button = Button(image=self.next_pl,
+                             bg=FONT_COLOR,
+                             borderwidth=0,
+                             compound=CENTER,
+                             command=self.remove_label
+                             )
         character = random.choice(self.players_list)
 
         if character == 'People':
             self.character_label.config(text=f'You are a people!\nThe word is {self.word}')
-            next_button.place(x=110, y=300)
+            self.character_label.place(x=140, y=100)
+            next_button.place(x=220, y=350)
 
         else:
             self.character_label.config(text='You are a Spy!')
-            next_button.place(x=110, y=300)
+            self.character_label.place(x=170, y=100)
+            next_button.place(x=220, y=350)
         self.players_list.remove(character)
         print(self.players_list)
         if len(self.players_list) == 0:
@@ -198,8 +207,13 @@ class Detail(Spy):
         for data in self.window.winfo_children():
             data.destroy()
 
-        self.start_button = Button(text="Next", bg=FONT_COLOR, width=30, command=self.spy_logic)
-        self.start_button.place(x=150, y=260)
+        self.start_button = Button(image=self.your_ch,
+                                   bg=FONT_COLOR,
+                                   borderwidth=0,
+                                   compound=CENTER,
+                                   command=self.spy_logic
+                                   )
+        self.start_button.place(x=220, y=260)
 
 
 def play_game():
